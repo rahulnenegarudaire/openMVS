@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = "secret key"
 path = os.getcwd()
-UPLOAD_FOLDER = os.path.join(path, 'uploads')
+UPLOAD_FOLDER = os.path.join(path, 'uploads/images')
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -21,7 +21,7 @@ def upload_form():
     return render_template('upload.html')
 
 
-@app.route('/', methods=['POST'])
+@app.route('/upload', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
 
@@ -40,6 +40,12 @@ def upload_file():
                 flash(message=f'{file.filename} uploaded successfully.')
 
         return redirect('/')
+
+@app.route("/compute/", methods=['POST'])
+def compute():
+    # flash("Computing. This will take a while.")
+    # return redirect('/')
+    return render_template('compute.html')
 
 
 if __name__ == "__main__":
