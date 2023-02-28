@@ -1,1 +1,1 @@
-python3 ~/openmvs/MvgMvsPipeline.py images output
+python3 ~/openmvs/MvgMvsPipeline.py uploads/images output
