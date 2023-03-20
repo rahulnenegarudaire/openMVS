@@ -41,8 +41,8 @@ def upload_file():
             if not allowed_file(file.filename):
                 flash(message=f'{file.filename} is of an invalid type.')
             elif file:
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(UNIQUE_FOLDER,"uploads/",filename))
+                # filename = secure_filename(file.filename)
+                file.save(os.path.join(UNIQUE_FOLDER,"uploads",file.filename))
                 flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
 
