@@ -43,7 +43,7 @@ def upload_file():
 
 def run_processing_command():
     os.system('echo "Upload complete. Running bash command..."')
-    os.system('python3 ~/openmvs/MvgMvsPipeline.py uploads/images output')
+    os.system('python3 ~/openMVS/MvgMvsPipeline.py uploads/images output')
 
 @app.route('/status')
 def get_thread_status():
@@ -70,4 +70,4 @@ def compute():
 
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5000, debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
