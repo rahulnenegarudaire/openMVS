@@ -42,7 +42,7 @@ def upload_file():
                 filename = secure_filename(file.filename)
                 os.system('mkdir {token}/uploads/images')
                 os.system('mkdir {token}/output')
-                file.save(token, os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                file.save(os.path.join(token,app.config['UPLOAD_FOLDER'], filename))
                 flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
 
