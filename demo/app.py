@@ -29,7 +29,7 @@ def upload_form():
 def upload_file():
     token = str(floor(random()*1000))
     UPLOAD_FOLDER = os.path.join(path,token,'uploads/images')
-    subprocess.run(f"mkdir {UPLOAD_FOLDER}")
+    subprocess.run(f"mkdir {UPLOAD_FOLDER}", shell=True)
     subprocess.run(f"mkdir /home/gauserapp/openMVS/demo/{token}/output")
     if request.method == 'POST':
         if 'files[]' not in request.files:
