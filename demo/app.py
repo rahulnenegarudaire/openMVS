@@ -40,9 +40,9 @@ def upload_file():
                 flash(message=f'{file.filename} is of an invalid type.')
             elif file:
                 filename = secure_filename(file.filename)
-                os.system('mkdir {token}/uploads/images')
-                os.system('mkdir {token}/output')
-                file.save(os.path.join(token,app.config['UPLOAD_FOLDER'], filename))
+                os.system('mkdir /home/gauserapp/openMVS/demo/{token}/uploads/images')
+                os.system('mkdir /home/gauserapp/openMVS/demo/{token}/output')
+                file.save(os.path.join(path,token,'uploads/images',filename))
                 flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
 
