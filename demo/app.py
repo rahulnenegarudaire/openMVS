@@ -28,22 +28,20 @@ def upload_form():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     token = str(floor(random()*1000))
+    UPLOAD_FOLDER = os.path.join(path,token,'uploads/images')
+    subprocess.run(f"mkdir {UPLOAD_FOLDER}")
+    subprocess.run(f"mkdir /home/gauserapp/openMVS/demo/{token}/output")
     if request.method == 'POST':
-
         if 'files[]' not in request.files:
             flash('No valid files selected.')
             return redirect(request.url)
-
         files = request.files.getlist('files[]')
-
         for file in files:
             if not allowed_file(file.filename):
                 flash(message=f'{file.filename} is of an invalid type.')
             elif file:
                 filename = secure_filename(file.filename)
-                subprocess.run(f"mkdir /home/gauserapp/openMVS/demo/{token}/uploads/images")
-                subprocess.run(f"mkdir /home/gauserapp/openMVS/demo/{token}/output")
-                file.save(os.path.join(path,token,'uploads/images',filename))
+                file.save(os.path.join(os.path,token,'uploads/images',filename))
                 flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
 
