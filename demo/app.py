@@ -26,7 +26,7 @@ def upload_form():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    token = floor(random*1000)
+    token = floor(random()*1000)
     if request.method == 'POST':
 
         if 'files[]' not in request.files:
