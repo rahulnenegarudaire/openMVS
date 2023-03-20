@@ -40,14 +40,14 @@ def upload_file():
                 flash(message=f'{file.filename} is of an invalid type.')
             elif file:
                 filename = secure_filename(file.filename)
+                os.system('mkdir {token}/uploads/images')
+                os.system('mkdir {token}/output')
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], token, filename))
                 flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
 
 def run_processing_command():
     os.system('echo "Upload complete. Running bash command..."')
-    os.system('mkdir {token}/uploads/images')
-    os.system('mkdir {token}/output')
     os.system('python3 ~/openMVS/MvgMvsPipeline.py {token}/uploads/images {token}/output')
 
 @app.route('/status')
