@@ -28,8 +28,8 @@ def upload_form():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     token = str(floor(random()*1000))
-    UPLOAD_FOLDER = os.path.join(path,token,'uploads/images')
-    subprocess.run(f"mkdir {UPLOAD_FOLDER}", shell=True)
+    UNIQUE_FOLDER = os.path.join(path,token)
+    subprocess.run("mkdir os.path.join(UNIQUE_FOLDER,uploads)", shell=True)
     subprocess.run(f"mkdir /home/gauserapp/openMVS/demo/{token}/output")
     if request.method == 'POST':
         if 'files[]' not in request.files:
@@ -47,7 +47,7 @@ def upload_file():
 
 def run_processing_command():
     os.system('echo "Upload complete. Running bash command..."')
-    os.system('python3 ~/openMVS/MvgMvsPipeline.py {token}/uploads/images {token}/output')
+    os.system('python3 ~/openMVS/MvgMvsPipeline.py {token}/uploads {token}/output')
 
 @app.route('/status')
 def get_thread_status():
