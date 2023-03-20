@@ -30,7 +30,7 @@ def upload_file():
     token = str(floor(random()*1000))
     UNIQUE_FOLDER = os.path.join(path,token)
     subprocess.run("mkdir os.path.join(UNIQUE_FOLDER,uploads)", shell=True)
-    subprocess.run(f"mkdir /home/gauserapp/openMVS/demo/{token}/output")
+    subprocess.run("mkdir os.path.join(UNIQUE_FOLDER,output)", shell=True)
     if request.method == 'POST':
         if 'files[]' not in request.files:
             flash('No valid files selected.')
