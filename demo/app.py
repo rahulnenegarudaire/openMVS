@@ -1,4 +1,5 @@
-import os      
+import os
+import subprocess      
 from flask import Flask, flash, request, redirect, render_template, jsonify
 from werkzeug.utils import secure_filename
 import threading
@@ -40,8 +41,8 @@ def upload_file():
                 flash(message=f'{file.filename} is of an invalid type.')
             elif file:
                 filename = secure_filename(file.filename)
-                os.system('mkdir /home/gauserapp/openMVS/demo/{token}/uploads/images')
-                os.system('mkdir /home/gauserapp/openMVS/demo/{token}/output')
+                subprocess.call('mkdir /home/gauserapp/openMVS/demo/{token}/uploads/images')
+                subprocess.call('mkdir /home/gauserapp/openMVS/demo/{token}/output')
                 file.save(os.path.join(path,token,'uploads/images',filename))
                 flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
