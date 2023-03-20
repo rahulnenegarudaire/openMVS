@@ -29,6 +29,7 @@ def upload_form():
 def upload_file():
     token = str(floor(random()*1000))
     UNIQUE_FOLDER = os.path.join(path,token)
+    subprocess.run(f"mkdir {UNIQUE_FOLDER}", shell=True)
     subprocess.run("mkdir os.path.join(UNIQUE_FOLDER,uploads)", shell=True)
     subprocess.run("mkdir os.path.join(UNIQUE_FOLDER,output)", shell=True)
     if request.method == 'POST':
