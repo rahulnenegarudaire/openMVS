@@ -2,6 +2,8 @@ import os
 from flask import Flask, flash, request, redirect, render_template, jsonify
 from werkzeug.utils import secure_filename
 import threading
+from random import random
+from math import floor
 
 app = Flask(__name__)
 app.secret_key = "secret key"
@@ -24,6 +26,7 @@ def upload_form():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    token = floor(random*1000)
     if request.method == 'POST':
 
         if 'files[]' not in request.files:
@@ -37,13 +40,15 @@ def upload_file():
                 flash(message=f'{file.filename} is of an invalid type.')
             elif file:
                 filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                flash(message=f'{file.filename} uploaded successfully.')
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], token, filename))
+                flash(message=f'{file.filename} uploaded successfully with token {token}.')
         return redirect('/')
 
 def run_processing_command():
     os.system('echo "Upload complete. Running bash command..."')
-    os.system('python3 ~/openMVS/MvgMvsPipeline.py uploads/images output')
+    os.system('mkdir {token}/uploads/images')
+    os.system('mkdir {token}/output')
+    os.system('python3 ~/openMVS/MvgMvsPipeline.py {token}/uploads/images {token}/output')
 
 @app.route('/status')
 def get_thread_status():
@@ -63,8 +68,8 @@ def compute():
     global processing_thread
     processing_thread = threading.Thread(target=run_processing_command)
     processing_thread.start()
-    while processing_thread.is_alive():
-        flash(message=get_thread_status())
+    # while processing_thread.is_alive():
+    #     flash(message=get_thread_status())
         
     return render_template('compute.html')
 
