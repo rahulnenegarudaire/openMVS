@@ -113,8 +113,8 @@ def find(afile):
 # Try to find openMVG and openMVS binaries in PATH
 # OPENMVG_BIN = whereis("openMVG_main_SfMInit_ImageListing")
 # OPENMVS_BIN = whereis("ReconstructMesh")
-OPENMVG_BIN = "~/openmv_libs/openmvg"
-OPENMVS_BIN = "~/openmv_libs/openmvs"
+OPENMVG_BIN = "/home/gauserapp/openmv_libs/openmvg"
+OPENMVS_BIN = "/home/gauserapp/openmv_libs/openmvs"
 
 # Try to find openMVG camera sensor database
 CAMERA_SENSOR_DB_FILE = "sensor_width_camera_database.txt"
