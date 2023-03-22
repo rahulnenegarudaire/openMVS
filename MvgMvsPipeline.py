@@ -119,7 +119,7 @@ OPENMVS_BIN = "/home/gauserapp/openmv_libs/openmvs"
 # Try to find openMVG camera sensor database
 CAMERA_SENSOR_DB_FILE = "sensor_width_camera_database.txt"
 # CAMERA_SENSOR_DB_DIRECTORY = find(CAMERA_SENSOR_DB_FILE)
-CAMERA_SENSOR_DB_DIRECTORY = "~/openmv_libs/openmvg"
+CAMERA_SENSOR_DB_DIRECTORY = "/home/gauserapp/openmv_libs/openmvg"
 
 # Ask user for openMVG and openMVS directories if not found
 if not OPENMVG_BIN:
