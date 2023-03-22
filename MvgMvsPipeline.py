@@ -405,3 +405,4 @@ for cstep in CONF.steps:
         print('\t'.join(cmdline))
 
 printout("# Pipeline end #", effect=INVERSE)
+exit()
