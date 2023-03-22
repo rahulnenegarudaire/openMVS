@@ -29,9 +29,12 @@ def upload_form():
 def upload_file():
     token = str(floor(random()*1000))
     UNIQUE_FOLDER = os.path.join(path,token)
-    subprocess.run(f"mkdir {UNIQUE_FOLDER}", shell=True)
-    subprocess.run(f"mkdir os.path.join({UNIQUE_FOLDER},uploads)", shell=True)
-    subprocess.run(f"mkdir os.path.join({UNIQUE_FOLDER},output)", shell=True)
+    # subprocess.run(f"mkdir {UNIQUE_FOLDER}", shell=True)
+    os.mkdir(f"{UNIQUE_FOLDER}")
+    os.mkdir(os.path.join(f"{UNIQUE_FOLDER}","uploads"))
+    os.mkdir(os.path.join(f"{UNIQUE_FOLDER}","output"))
+    # subprocess.run(f"mkdir os.path.join({UNIQUE_FOLDER},uploads)", shell=True)
+    # subprocess.run(f"mkdir os.path.join({UNIQUE_FOLDER},output)", shell=True)
     if request.method == 'POST':
         if 'files[]' not in request.files:
             flash('No valid files selected.')
