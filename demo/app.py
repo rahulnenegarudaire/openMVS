@@ -14,7 +14,7 @@ if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-
+TOKEN = str(floor(random()*1000))
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -27,8 +27,8 @@ def upload_form():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    token = str(floor(random()*1000))
-    UNIQUE_FOLDER = os.path.join(path,token)
+    
+    UNIQUE_FOLDER = os.path.join(path,TOKEN)
     # subprocess.run(f"mkdir {UNIQUE_FOLDER}", shell=True)
     os.mkdir(f"{UNIQUE_FOLDER}")
     os.mkdir(os.path.join(f"{UNIQUE_FOLDER}","uploads"))
@@ -46,12 +46,12 @@ def upload_file():
             elif file:
                 # filename = secure_filename(file.filename)
                 file.save(os.path.join(UNIQUE_FOLDER,"uploads",file.filename))
-                flash(message=f'{file.filename} uploaded successfully with token {token}.')
+                flash(message=f'{file.filename} uploaded successfully with token {TOKEN}.')
         return redirect('/')
 
 def run_processing_command():
     os.system('echo "Upload complete. Running bash command..."')
-    os.system('python3 ~/openMVS/MvgMvsPipeline.py {token}/uploads {token}/output')
+    os.system(f'python3 ~/openMVS/MvgMvsPipeline.py {TOKEN}/uploads {TOKEN}/output')
 
 @app.route('/status')
 def get_thread_status():
