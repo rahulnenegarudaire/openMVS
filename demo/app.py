@@ -74,7 +74,7 @@ def get_thread_status():
 
 
 @app.route("/computePhotogrammetry/", methods=['POST'])
-def compute():
+def computePhotogrammetry():
     # flash("Computing. This will take a while.")
     # return redirect('/')
     global processing_thread
@@ -87,7 +87,7 @@ def compute():
 
 
 @app.route("/computeObjectDetection/", methods=['POST'])
-def compute():
+def computeObjectDetection():
     # flash("Computing. This will take a while.")
     # return redirect('/')
     global processing_thread
