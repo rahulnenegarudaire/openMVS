@@ -13,7 +13,7 @@ UPLOAD_FOLDER = os.path.join(path, 'uploads/images')
 if not os.path.isdir(UPLOAD_FOLDER):
     os.mkdir(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'mp4'])
 TOKEN = str(floor(random()*1000))
 
 
