@@ -29,3 +29,7 @@ See the [copyright](https://github.com/cdcseacave/openMVS/blob/master/COPYRIGHT.
 ## Contact
 
 openmvs[AT]googlegroups.com
+
+## Garudaire ML/AI Pipeline
+
+Currently stored under the folder labelled 'demo'. This pipeline runs as a flask app and uses a pure HTML web page for the UI. Files are uploaded and stored in a uniquely numbered folder per connection instance and the page must be refreshed to start a new upload at the moment After upload, one may run either photogrammetry or object detection by clicking the appropriate button. The result files will be found in the numebred folder under OUTPUT.
